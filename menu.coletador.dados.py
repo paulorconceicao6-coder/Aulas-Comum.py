@@ -1,100 +1,45 @@
-# Foi feita uma pesquisa entre os habitantes de uma região.  Foram coletados os dados de idade, sexo (M/F) e salário. 
-
-# Faça um algoritmo que informe:  
-
-
-# a) a média de salário do grupo;
-
-# b) maior e menor idade do grupo;
-
-# c) quantidade de mulheres com salário a partir de R$ 5.000,00.
-
-
-# Crie um menu com três opções.
-
-
-# Código |   Descrição
-
-#        1        |   Adicionar pessoa
-
-#        2       |   Exibir resultados
-
-#        3       |   Sair
-
-
-# O final da leitura de dados se dará com quando o usuário digitar o número código 3. 
-
-# Ao adicionar uma pessoa, deve-se limpar o terminal e apresentar o menu novamente.
-
-
-# Inicialização das variáveis
 
 import os
+os.system ("cls || clear")
+print ("Bem Vindo ao programa de pesquisa de dados")
 
-def limpar_tela():
-    # Verifica o sistema operacional para limpar o terminal corretamente
-    # 'nt' é Windows, 'posix' é Linux/MacOS
-    os.system('cls' if os.name == 'nt' else 'clear')
+salarios = [] # Serve para a pessoa Determinar o Valor do Seu Salário.
+filhos = []
 
-def main():
-    # Variáveis para armazenar os dados
-    salarios = []
-    idades = []
-    mulheres_5000 = 0
-    
-    while True:
-        print("\n--- MENU DE PESQUISA ---")
-        print("1 | Adicionar pessoa")
-        print("2 | Exibir resultados")
-        print("3 | Sair")
-        
-        opcao = input("Escolha uma opção: ")
-        
-        if opcao == '1':
-            limpar_tela()
-            print("--- Cadastrar Pessoa ---")
-            
-            # Coleta de dados
-            try:
-                idade = int(input("Idade: "))
-                sexo = input("Sexo (M/F): ").upper()
-                salario = float(input("Salário: R$ "))
-                
-                # Armazenar dados para cálculos
-                idades.append(idade)
-                salarios.append(salario)
-                
-                # Regra c: quantidade de mulheres com salário a partir de R$ 5.000,00
-                if sexo == 'F' and salario >= 5000.00:
-                    mulheres_5000 += 1
-                
-                print("\nPessoa adicionada com sucesso!")
-                input("Pressione Enter para continuar...")
-                limpar_tela()
-                
-            except ValueError:
-                print("Erro: Entrada inválida. Tente novamente.")
-                
-        elif opcao == '2':
-            if not salarios:
-                print("\nNenhum dado cadastrado.")
-            else:
-                # Cálculos finais
-                media_salario = sum(salarios) / len(salarios)
-                maior_idade = max(idades)
-                menor_idade = min(idades)
-                
-                print("\n--- RESULTADOS ---")
-                print(f"a) Média de salário do grupo: R$ {media_salario:.2f}")
-                print(f"b) Maior idade: {maior_idade} | Menor idade: {menor_idade}")
-                print(f"c) Mulheres com salário >= R$ 5.000,00: {mulheres_5000}")
-                input("Pressione Enter para continuar...")
-                
-        elif opcao == '3':
-            print("Encerrando o programa.")
-            break
-        else:
-            print("Opção inválida! Tente 1, 2 ou 3.")
+while True:
+    print ("\nMenu:")
+    print ("1 - Adicionar Familia.")
+    print ("2 - Sair e Exibir o Resultado.")
 
-if __name__ == "__main__":
-    main()
+    opcao = input("Digite o Código da Opção Desejada. ")
+
+    if opcao == "1":
+     os.system ("cls || clear")  
+     salario = float(input("Digite seu Salário. "))
+     numero_filhos = int(input("Digite o número de Filhos. "))      
+     
+     salario.append (salario)
+     filhos.append (numero_filhos)
+     
+    elif opcao == "2":
+       break
+    else:
+       print ("Opção inválida. Por Favor, digite 1 ou 2.")
+
+       if len(salario) > 0:
+          total_familias = len(salarios)
+          media_salario = sum(salarios) / total_familias
+          media_filhos = sum(filhos) / total_familias
+          maior_salario = max(salarios)
+          menor_salario = min(salarios)
+
+          print (f"Total de Famílias que responderam a pesquisa: {total_familias:.2f}")
+          print (f"Média do Salário da População: R$ {media_salario:.2f}")
+          print (f"Média do Número de Filhos: {media_filhos:.2f}")
+          print (f"Maior Salário: R$ {maior_salario:.2f}")
+          print (f"Menor Salário: R$ {menor_salario:.2f}")
+
+       else:
+          print ("Nenhuma Família Cadastrada.")
+          
+          print ("\nPrograma Encerrado. ")
